@@ -12,6 +12,9 @@ setup(
     author_email='ludwik@gmail.com',
     url='http://code.google.com/p/django-tagging-autocomplete/',
     packages=find_packages(),
+    requires=[
+        'django (>=1.3)',
+    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
@@ -22,6 +25,4 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
-    #package_data={},
-    #test_suite='tagging_autocomplete.tests.runtests.runtests'
 ) 

@@ -1,9 +1,9 @@
 from south.modelsinspector import add_introspection_rules
 from django.conf import settings
 
-if "tagging_autocomplete_tagit" in settings.INSTALLED_APPS:
+if "tagging_autosuggest" in settings.INSTALLED_APPS:
     try:
-        from tagging_autocomplete_tagit.models import TagAutocompleteTagItField
+        from tagging_autosuggest.models import TagAutocompleteTagItField
     except ImportError:
         pass
     else:
@@ -18,4 +18,4 @@ if "tagging_autocomplete_tagit" in settings.INSTALLED_APPS:
                 },
             ),
         ]
-        add_introspection_rules(rules, ["^tagging_autocomplete_tagit\.models",])
+        add_introspection_rules(rules, ["^tagging_autosuggest\.models",])

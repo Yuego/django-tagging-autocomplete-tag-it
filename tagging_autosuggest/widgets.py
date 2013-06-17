@@ -4,11 +4,11 @@ from django.conf import settings
 from django.utils.safestring import mark_safe
 
 
-class TagAutocompleteTagIt(TextInput):
+class TagAutosuggestTagIt(TextInput):
     
     def __init__(self, max_tags, *args, **kwargs):
         self.max_tags = max_tags if max_tags else getattr(settings, 'TAGGING_AUTOCOMPLETE_MAX_TAGS', 20)
-        super(TagAutocompleteTagIt, self).__init__(*args, **kwargs)
+        super(TagAutosuggestTagIt, self).__init__(*args, **kwargs)
 
     def render(self, name, value, attrs=None):
         """ Render HTML code """
@@ -20,8 +20,8 @@ class TagAutocompleteTagIt(TextInput):
         remove_confirmation = 'true' if getattr(settings, 'TAGGING_AUTOCOMPLETE_REMOVE_CONFIRMATION', True) else 'false'
         animate = 'true' if getattr(settings, 'TAGGING_AUTOCOMPLETE_ANIMATE', True) else 'false'
         
-        list_view = reverse('tagging_autocomplete_tagit-list')
-        html = super(TagAutocompleteTagIt, self).render(name, value, attrs)
+        list_view = reverse('tagging_autosuggest-suggest')
+        html = super(TagAutosuggestTagIt, self).render(name, value, attrs)
         # Subclass this field in case you need to add some custom behaviour like custom callbacks
         js = u"""<script type="text/javascript">init_jQueryTagit({
                 objectId: '%s',
@@ -44,7 +44,7 @@ class TagAutocompleteTagIt(TextInput):
     
     class Media:
         # JS Base url defaults to STATIC_URL/jquery-autocomplete/
-        js_base_url = getattr(settings, 'TAGGING_AUTOCOMPLETE_JS_BASE_URL', '%sjs/jquery-tag-it/' % settings.STATIC_URL)
+        js_base_url = getattr(settings, 'TAGGING_AUTOCOMPLETE_JS_BASE_URL', '{0}tagging_autosuggest/js/'.format(settings.STATIC_URL))
         # jQuery ui is loaded from google's CDN by default
         jqueryui_default = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js'
         jqueryui_file = getattr(settings, 'TAGGING_AUTOCOMPLETE_JQUERY_UI_FILE', jqueryui_default)
@@ -55,13 +55,13 @@ class TagAutocompleteTagIt(TextInput):
         
         # load js
         js = (
-            '%stagging_autocomplete_tagit.js' % js_base_url,
+            '%stagging_autosuggest.js' % js_base_url,
             jqueryui_file,
             '%sjquery.tag-it.min.js' % js_base_url,            
         )
         
         # custom css can also be overriden in settings
-        css_list = getattr(settings, 'TAGGING_AUTOCOMPLETE_CSS', ['%scss/ui-autocomplete-tag-it.css' % js_base_url])
+        css_list = getattr(settings, 'TAGGING_AUTOCOMPLETE_CSS', ['{0}tagging_autosuggest/css/ui-autocomplete-tag-it.css'.format(settings.STATIC_URL)])
         # check is a list, if is a string convert it to a list
         if type(css_list) != list and type(css_list) == str:
             css_list = [css_list]
