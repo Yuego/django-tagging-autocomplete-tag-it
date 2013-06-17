@@ -6,6 +6,8 @@ from django.contrib.admin.widgets import AdminTextInputWidget
 from tagging.fields import TagField
 from tagging_autosuggest.widgets import TagAutosuggestTagIt
 
+from .models import tagging_has_namespace
+
 # The following code is based on models.py file from django-tinymce by Joost Cassee
 
 
@@ -19,11 +21,18 @@ class TagAutosuggestField(TagField):
         super(TagAutosuggestField, self).__init__(*args, **kwargs)
     
     def formfield(self, **kwargs):
-        defaults = {'widget': TagAutosuggestTagIt(max_tags=self.max_tags)}
+        widget_kwargs = {
+            'max_tags': self.max_tags,
+        }
+        if hasattr(self, 'namespace'):
+            widget_kwargs.update({
+                'namespace': self.namespace
+            })
+        defaults = {'widget': TagAutosuggestTagIt(**widget_kwargs)}
         defaults.update(kwargs)
 
         # As an ugly hack, we override the admin widget
         if defaults['widget'] == AdminTextInputWidget:
-            defaults['widget'] = TagAutosuggestTagIt(max_tags=self.max_tags)
+            defaults['widget'] = TagAutosuggestTagIt(**widget_kwargs)
 
         return super(TagAutosuggestField, self).formfield(**defaults)
