@@ -2,14 +2,12 @@
 from setuptools import setup, find_packages
 
 from tagging_autosuggest.version import __version__
-
-long_description = open('README.md').read()
  
 setup(
-    name='django-tagging-autocomplete',
+    name='django-autosuggest',
     version=__version__,
     description='Autocompletion for django-tagging',
-    long_description=long_description,
+    long_description=open('README.rst').read(),
     author='Ludwik Trammer',
     author_email='ludwik@gmail.com',
     url='http://code.google.com/p/django-tagging-autocomplete/',
@@ -27,5 +25,4 @@ setup(
         'Programming Language :: Python',
         'Framework :: Django',
     ],
-    zip_safe=False,
 ) 
