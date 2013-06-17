@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
- 
+
+from tagging_autosuggest.version import __version__
+
 long_description = open('README.txt').read()
  
 setup(
     name='django-tagging-autocomplete',
-    version='0.3.1',
+    version=__version__,
     description='Autocompletion for django-tagging',
     long_description=long_description,
     author='Ludwik Trammer',
@@ -13,7 +15,7 @@ setup(
     url='http://code.google.com/p/django-tagging-autocomplete/',
     packages=find_packages(),
     requires=[
-        'django (>=1.3)',
+        'django (>=1.4)',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',

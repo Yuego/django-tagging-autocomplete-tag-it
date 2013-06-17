@@ -1,9 +1,13 @@
+#coding: utf-8
+from __future__ import unicode_literals, absolute_import
+
+from django.contrib.admin.widgets import AdminTextInputWidget
 
 from tagging.fields import TagField
 from tagging_autosuggest.widgets import TagAutosuggestTagIt
-from django.contrib.admin.widgets import AdminTextInputWidget
 
 # The following code is based on models.py file from django-tinymce by Joost Cassee
+
 
 class TagAutosuggestField(TagField):
     """
