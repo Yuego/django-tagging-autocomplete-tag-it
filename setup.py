@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 from tagging_autosuggest.version import __version__
 
-long_description = open('README.txt').read()
+long_description = open('README.md').read()
  
 setup(
     name='django-tagging-autocomplete',
