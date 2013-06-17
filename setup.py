@@ -14,6 +14,7 @@ setup(
     author_email='ludwik@gmail.com',
     url='http://code.google.com/p/django-tagging-autocomplete/',
     packages=find_packages(),
+    include_package_data=True,
     requires=[
         'django (>=1.4)',
     ],
