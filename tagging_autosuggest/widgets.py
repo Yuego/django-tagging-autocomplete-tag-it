@@ -58,7 +58,7 @@ class TagAutosuggestTagIt(TextInput):
         # JS Base url defaults to STATIC_URL/jquery-autocomplete/
         js_base_url = getattr(settings, 'TAGGING_AUTOSUGGEST_JS_BASE_URL', '{0}tagging_autosuggest/js/'.format(settings.STATIC_URL))
         # jQuery ui is loaded from google's CDN by default
-        jqueryui_default = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js'
+        jqueryui_default = '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'
         jqueryui_file = getattr(settings, 'TAGGING_AUTOSUGGEST_JQUERY_UI_FILE', jqueryui_default)
         # if a custom jquery ui file has been specified
         if jqueryui_file != jqueryui_default:
