@@ -1,2 +1,10 @@
+
 *.pyc
-*.lnk
+*.*~
+*.swp
+Thumbs.db
+
+.idea/
+.rope*
+PYSMELLTAGS
+reports
