@@ -1,4 +1,0 @@
-include setup.py README.rst MANIFEST.in
-recursive-include tagging_autosuggest/static *
-recursive-exclude tagging_autosuggest/static/tagging_autosuggest/uncompressed *
-global-exclude *~

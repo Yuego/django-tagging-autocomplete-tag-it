@@ -15,6 +15,7 @@ setup(
     include_package_data=True,
     requires=[
         'django (>=1.4)',
+        'tagging (>=0.5.0)',
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
